@@ -28,5 +28,5 @@ contactMeBtn.addEventListener("click", ()=> {
 });
     function scrollIntoView(selector){
     const scrollTo = document.querySelector(selector);
-    scrollTo.scrollToView({behavior : "smooth" })
+    scrollTo.scrollIntoView({behavior : "smooth" })
     }
