@@ -130,7 +130,7 @@ p {
 } */
 /* Home */
 #home {
-  background: url(../imgs/home_bkg.png) center no-repeat; /*수정*/
+  background: url(imgs\home_bkg.png) center no-repeat; /*수정*/
   padding: 40px;
   padding-top: 120px;
   text-align: center;

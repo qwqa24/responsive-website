@@ -23,7 +23,7 @@ navbarMenu.addEventListener("click", (event) => {
     scrollIntoView(link);
 });
 
-//contactMeBtn 버튼 이동하기d
+//contactMeBtn 버튼 이동하기
 const cintactMeBtn = document.querySelector(".home__contact");
 cintactMeBtn.addEventListener("click", () => {
     scrollIntoView("contact");
