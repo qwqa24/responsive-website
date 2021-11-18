@@ -23,22 +23,17 @@ navbarMenu.addEventListener("click", (event) => {
     scrollIntoView(link);
 });
 
-//contactMeBtn 버튼 이동하기
-const cintactMeBtn = document.querySelector(".home__contact");
-cintactMeBtn.addEventListener("click", () => {
-    scrollIntoView("contact");
-});
-
-//contact btn
-const homeMainHeight = document.querySelector("#home").getBoundingClientRect().height;
+//arrow up 버튼 스크롤 될 때 생성
 const arrowUp = document.querySelector(".arrow-up");
 document.addEventListener("scroll", () => {
-    if(window.scrollY/homeMainHeight > 0.5)
+    if (window.scrollY > homeHeight / 2) {
     arrowUp.classList.add("visible");
-    else
-     arrowUp.classList.remove("visible");
+    } else {
+    arrowUp.classList.remove("visible");
+    }
 });
-arrowUp.addEventListener("click", () =>{
+// arrow up 버튼 클릭했을 때 home으로 올라가기
+arrowUp.addEventListener("click", () => {
     scrollIntoView("#home");
 });
 
@@ -55,6 +50,41 @@ const navbarToggleBtn = document.querySelector(".navbar__toggle-btn");
 navbarToggleBtn.addEventListener("click", () => {
     // console.log(navbarMenu.classList.toggle("open"))
     navbarMenu.classList.toggle("open");
+});
+
+//프로젝트 js부분
+const workBtnContainer = document.querySelector(".work__categories");
+const projectContainer = document.querySelector(".work__projects");
+const projects = document.querySelectorAll(".project");
+workBtnContainer.addEventListener("click", (e) => {
+  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  if (filter == null) {
+    return;
+  }
+  projects.forEach((project) => {
+    if (filter === "*" || filter === project.dataset.type) {
+      project.classList.remove("invisible");
+    } else {
+      project.classList.add("invisible");
+    }
+  });
+  const active = document.querySelector(".category__btn.selected");
+  if (active != null) {
+    active.classList.remove("selected");
+  }
+  e.target.classList.add("selected");
+  projectContainer.classList.add("anim-out");
+  setTimeout(() => {
+    projects.forEach((project) => {
+      console.log(project.dataset.type);
+      if (filter === "*" || filter === project.dataset.type) {
+        project.classList.remove("invisible");
+      } else {
+        project.classList.add("invisible");
+      }
+    });
+    projectContainer.classList.remove("anim-out");
+  }, 300);
 });
 
 function scrollIntoView(selector) {
